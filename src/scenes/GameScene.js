@@ -98,6 +98,7 @@ export default class GameScene extends Phaser.Scene {
     nextQuestion() {
         if(this.questionNumber >= this.questionTotal) {
             this.removeAllElements();
+            this.scene.start('Result', {score: this.score});
         } else {
             this.questionNumber+=1;
             this.removeAllElements();
