@@ -5,5 +5,5 @@ export default {
     parent: 'phaser-example',
     width: window.innerWidth,
     height: window.innerHeight,
-    backgroundColor: '#bfcc00',
+    backgroundColor: '#4e90ff',
 };
