@@ -19,12 +19,6 @@ FBInstant.initializeAsync().then(function() {
   try{
     FBInstant.startGameAsync()
         .then(function() {
-          let contextId = FBInstant.context.getID();
-          let contextType = FBInstant.context.getType();
-
-          let playerName = FBInstant.player.getName();
-          let playerPic = FBInstant.player.getPhoto();
-          let playerId = FBInstant.player.getID();
           new Game();
         });
   }

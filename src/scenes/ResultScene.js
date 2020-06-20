@@ -45,18 +45,17 @@ export default class ResultScene extends Phaser.Scene {
     }
 
     create() {
-        console.log(this.score);
         this.imageResult = this.add.image(this.game.config.width / 2, this.game.config.height / 2, this.result);
         this.imageResult.displayWidth = this.game.config.width / 2;
         this.imageResult.scaleY = this.imageResult.scaleX;
+        this.imageResult.y = 90 + (this.imageResult.scaleY*this.imageResult.height)/2;
         this.createTitle('Your elemental power is: '+this.result+'!');
-        this.createButton(4, this.shareClicked);
-        this.createLabel(4, 'Share your result!');
+        this.createButton(this.shareClicked);
+        this.createLabel('Share your result!');
     }
 
-    createButton(position, func) {
+    createButton(func) {
         const width = this.game.config.width;
-        const height = this.game.config.height;
         let button = this.add.graphics();
         button.fillStyle(0x000000, 0.6); // color, alpha
         button.fillRoundedRect(0, 0, width/2, 100); // x, y, width, height, radius
@@ -66,15 +65,15 @@ export default class ResultScene extends Phaser.Scene {
         button.input.cursor = "pointer";
         button.name = "button_test";
         button.x = width/4;
-        button.y = 100 + (position*150);
+        button.y = 120 + (this.imageResult.scaleY*this.imageResult.height);
         button.setInteractive();
         button.on('pointerdown', func);
         return button;
     }
 
-    createLabel(position, text) {
+    createLabel(text) {
         const width = this.game.config.width;
-        let label = this.add.text(width/2,150 + (position*150),text,{
+        let label = this.add.text(width/2,170 + (this.imageResult.scaleY*this.imageResult.height),text,{
             fontFamily:'Arial',
             color:'#ffffff',
             align:'center',
@@ -96,9 +95,9 @@ export default class ResultScene extends Phaser.Scene {
 
     shareClicked(){
         FBInstant.shareAsync({
-            intent: 'REQUEST',
+            intent: 'SHARE',
             image: FBInstant.player.getPhoto(),
-            text: 'X is asking for your help!',
+            text: FBInstant.player.getName() + ' elemental power is: ' + this.result + '. Check what your power is now!',
             data: { myReplayData: '...' },
         }).then(function() {
             // continue with the game.
