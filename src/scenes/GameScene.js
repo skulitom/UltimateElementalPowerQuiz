@@ -14,11 +14,18 @@ export default class GameScene extends Phaser.Scene {
         this.title;
         this.score = 0;
         this.questionNumber = 0;
-        this.questionTotal = 2;
+        this.questionTotal = 9;
         this.questions = [
             'Which color do you prefer?',
-            'Where would you rather spend a holiday?',
-            'Which animal do you prefer?'
+            'Chose a holiday',
+            'Which animal do you prefer?',
+            'Chose a present',
+            'Chose a letter',
+            'Chose a number',
+            'Chose a subject',
+            'Chose a country',
+            'Chose a drink',
+            'Chose a food',
         ];
 
         this.answerLabels = [
@@ -34,6 +41,34 @@ export default class GameScene extends Phaser.Scene {
             'Cat',
             'Fish',
             'Dog',
+            'Phone',
+            'Console',
+            'Vacation',
+            'Luxury Watch',
+            'z',
+            'f',
+            'g',
+            'q',
+            '0',
+            '6',
+            '4',
+            '3',
+            'Geography',
+            'Math',
+            'Science',
+            'History',
+            'USA',
+            'UAE',
+            'France',
+            'Germany',
+            'Sprite',
+            'Coca-cola',
+            'Fanta',
+            'Juice',
+            'Burgers',
+            'Salad',
+            'Pie',
+            'Noodles',
         ];
         this.onClickButton = this.onClickButton.bind(this);
         this.nextQuestion = this.nextQuestion.bind(this);
